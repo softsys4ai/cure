@@ -22,6 +22,22 @@ MS              | mission success. Example: if the robot successfully reached po
 
 Reval supports both the [Husky simulator](https://www.clearpathrobotics.com/assets/guides/melodic/husky/SimulatingHusky.html) and Hysky physical robot. The instructions provided below are for Husky simulator. To run Reval on the physical Husky, first setup your husky using [Husky UGV Tutorial](https://www.clearpathrobotics.com/assets/guides/melodic/husky/BackUpHusky.html) then follow the below instructions.
 
+             Probe      Probe
+             +            +
+             |            |
+    +--------|------------|-------+     +-----------------------------+
+    |        |            |       |     |                             |
+    |     +--|------------|-+     |     |                             |
+    |     |  v            v |     |     |          - TD      <--------------+ Probe
+    |     |                 |     |     |          - DWA F   <--------------+ Probe
+    |     |     MS, BP      |     |     |          - MT      <--------------+ Probe
+    |     |                 |     |     |          - RNS     <--------------+ Probe
+    |     +-----------------+     |     |                             |
+    |      System under test      |     |       System under test     |
+    +-----------------------------+     +-----------------------------+
+              Functional                        Non-functional
+
+
 ## Build status
 Build Type      |    Status     |
 -----------     | --------------|
