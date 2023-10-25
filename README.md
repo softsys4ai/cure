@@ -88,6 +88,8 @@ python run_cure_MOO.py --robot Turtlebot3_sim --outlier_data data/bug/turtlebot3
 In this example, we used `Energy` and `Positional_error` as our two objectives, and `Task_success_rate` and `Obstacle_distance` as constraints.
 
 ### Transferibility
+#### Hardware
+- Turtlebot 3 burger
 #### Setup
 1. Install the required dependencies for [Turtlebot 3](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)
 2. Run `roscore` on remote PC
