@@ -37,9 +37,9 @@ optional arguments:
   --nf  [ ...]          non-functional properties (default: [Energy,
                         Positional_error])
   --repeat              number of bootstrap resamples (default: 1)
-  --top_k               number of root-causes based on Ridge coeffecients
+  --top_k               number of root-causes based on average causal effect
                         (default: 5)
-  -l                    diagnose root-causes from the saved model [must True
+  -l                    diagnose root-causes from the saved model [must be True
                         to use --model]
   --model               saved model path (.model)
   -opt                  perform optimization [must be True to use --budget,
