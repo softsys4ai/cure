@@ -101,7 +101,6 @@ To transfer the causal model learned from simulation to a physical robot `(Turtl
 ```
 python run_cure_MOO.py --robot Turtlebot3_phy --outlier_data data/bug/turtlebot3_outlier.csv -l --model model/care_Turtlebot3_sim.model --f Task_success_rate --nf Energy Positional_error Obstacle_distance --top_k 5 -opt --f1 Energy --f2 Positional_error --f1_pref 2.0 --f2_pref 0.18 --sc 0.25 --tcr 0.8 --hv_ref_f1 19.98 --hv_ref_f2 15 --budget 200
 ```
-In this example, we used the causal model learned from `Turtlebot 3` in simulation and used it in `Turtlebot 3 physical` robot 
 
 ## More details abour Cure
 For detailed instructions to reproduce our results, please use [functionality](https://github.com/softsys4ai/cure/blob/main/doc/FUNTIONALITY.md) and [reproducibility](https://github.com/softsys4ai/cure/blob/main/doc/REPRODUCE.md)
