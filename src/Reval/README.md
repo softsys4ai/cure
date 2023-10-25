@@ -115,31 +115,10 @@ pip install tabulate
 ```
 Or `cd Reval/` run `./requirements.sh`. If you face permission denied, first run `chmod +x requirements.sh` 
 
-## Building Reval
-Source your ROS setup.sh file
-```sh
-source /opt/ros/<ros distro>/setup.bash
-```
-
-Run `catkin build` on the `Reval root` directory
-```sh
-cd Reval/
-```
-```sh
-catkin build
-```
-N.b. If you face `Catkin command not found`, install `sudo apt-get install python3-catkin-tools` OR you can use `catkin_make`
-
-If everything is correct, you should see something similar to the following output
-
-<!-- ![catkin_build](https://user-images.githubusercontent.com/73362969/165857662-dd52c4d0-8a00-45f3-bdfc-1ceb9c9bde62.jpg) -->
-![Catkin build](https://user-images.githubusercontent.com/73362969/167683326-92265a48-f735-4cd1-a44e-db4c67535629.gif)
-
-
 
 ## Running Reval
 ```sh
-cd Reval/
+cd cure/
 ```
 source your new `setup.sh` file. You need source this `setup.sh` file everytime you open a new Terminal
 ```sh
@@ -147,6 +126,7 @@ source devel/setup.bash
 ```
 To evaluate the mission run
 ```sh
+cd cure/src/Reval
 python reval_husky_sim.py
 ```
 
