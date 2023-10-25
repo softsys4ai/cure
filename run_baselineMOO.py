@@ -2,6 +2,7 @@ import signal
 import sys
 import pickle
 import os
+import subprocess
 from src.baseline_MOO import AXMO
 from ax.plot.pareto_utils import compute_posterior_pareto_frontier, get_observed_pareto_frontiers
 from ax.service.ax_client import AxClient
@@ -39,6 +40,9 @@ if __name__ == "__main__":
         else:
             print("[STATUS]: Optimization snapshot restored!")                     
     MO = AXMO(robot, viz)
+    if args.robot == "Turtlebot3_phy":
+        print("[STATUS]: Launching navigation node")
+        turtlebot_nav = subprocess.check_call("./turtlebot3_move_base_phy.sh '%s'", cwd="src/Reval/src/benchmark/service", shell=True)    
     print("[STATUS]: Performing multi-objective BO")
     signal.signal(signal.SIGINT, KeyboardInterrupt.signal_handler)
     AX_exp = MO.ax(n_iter=args.budget,

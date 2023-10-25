@@ -2,6 +2,7 @@ import sys
 import os
 import pickle
 import signal
+import subprocess
 import pandas as pd
 import numpy as np
 from tabulate import tabulate
@@ -102,6 +103,9 @@ if __name__ == "__main__":
         MO = SFAXMO(robot, viz)
         
         signal.signal(signal.SIGINT, KeyboardInterrupt.signal_handler)
+        if args.robot == "Turtlebot3_phy":
+            print("[STATUS]: Launching navigation node")
+            turtlebot_nav = subprocess.check_call("./turtlebot3_move_base_phy.sh '%s'", cwd="src/Reval/src/benchmark/service", shell=True)        
         # Perform optimization
         print("[STATUS]: Performing multi-objective BO")
         with open('src/Reval/src/benchmark/log/sc.ob', 'wb') as fp:

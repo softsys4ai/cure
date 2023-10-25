@@ -57,10 +57,10 @@ class Argsparser_care():
                             choices=range(1, 45),
                             default=5, 
                             type=int,                                       
-                            help='number of root-causes based on Ridge coeffecients (default:  5)')
+                            help='number of root-causes based on average causal effect (default:  5)')
         parser.add_argument('-l', 
                             action="store_true",                                     
-                            help='diagnose root-causes from the saved model [must True to use --model]') 
+                            help='diagnose root-causes from the saved model [must be True to use --model]') 
         parser.add_argument('--model', 
                             metavar='',                              
                             help='saved model path (.model)')         

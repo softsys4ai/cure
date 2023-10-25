@@ -2,6 +2,7 @@ import os
 import signal
 import sys
 import pickle
+import subprocess
 import pandas as pd
 import networkx as nx
 from tabulate import tabulate
@@ -160,6 +161,9 @@ if __name__ == '__main__':
                 sys.exit(f"[ERROR]: Saved optimization JSON (snapshot {args.snap}) not found!")
             else:
                 print("[STATUS]: Optimization snapshot restored!")             
+        if args.robot == "Turtlebot3_phy":
+            print("[STATUS]: Launching navigation node")
+            turtlebot_nav = subprocess.check_call("./turtlebot3_move_base_phy.sh '%s'", cwd="src/Reval/src/benchmark/service", shell=True)  
         print("[STATUS]: Performing multi-objective BO")
         from src.SFAXMO import SFAXMO
         MO = SFAXMO(robot, viz)
