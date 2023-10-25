@@ -1,2 +1,0 @@
-Planner_failed,DWA_new plan,DWA_invalid_trajectory,Recovery_executed,ClearCostMaps_unstuck_recovery_executed,ClearCostMaps_layer_recovery_executed,Invalid_rotation_cmd,Error_rotating_goal,Positional_error,RNS,Traveled_distance,Mission_time,Energy,Obstacle_distance,Mission_success
-131,132,0,8,0,0,0,0,3.6451690454361256,0.2,6.17,106.09,90.99,0.4,0
