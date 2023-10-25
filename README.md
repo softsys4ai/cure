@@ -96,10 +96,9 @@ In this example, we used `Energy` and `Positional_error` as our two objectives, 
 ssh ubuntu@{IP_ADDRESS_OF_RASPBERRY_PI}
 roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
-4. Launch the navigation on remote PC
+4. Set Turtlebot 3 model on remote PC
 ```
 $ export TURTLEBOT3_MODEL=burger
-$ roslaunch turtlebot3_navigation turtlebot3_navigation.launch
 ```
 N.b. Place the `map` files in your `home` directory
 
