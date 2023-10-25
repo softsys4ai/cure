@@ -54,9 +54,6 @@ Consider an user deoployed a mobile robot to a new environment and definied the 
 
 After deployment. the user encounters `energy` and `task completion` faults as the following:  
 
-```
-**Example Bug**
-----------------------------------------------
 controller_frequency	        5.73
 planner_patience	            6.37
 controller_patience	          6.23
@@ -99,8 +96,7 @@ Mission_time	                1749.19
 Obstacle_distance	            0.4
 Energy	                      364.04
 Task_success_rate	            0
-----------------------------------------------
-```
+
 The reported `energy=364.04 Wh`,  `Task_success_rate=0`, and `Positional_error=2.14 meter`. To ensure optimial performance of the robot, the user utilizes Cure to determine the root cause of such performance and expects to achieve `energy<=40 Wh`,  `Task_success_rate>=0.8`, and `Positional_error<=0.18 meter`. Optionally, the user can also use constraint on `Obstacle_distance<=0.25 meter` to ensure safety. 
 
 To avoid constant human supervision and effort required to perform execution in physical robots, we collect observation data in simulation to learn the causal model using [Reval](https://github.com/softsys4ai/cure/blob/main/src/Reval/README.md). We already included the observational data in `cure/data` directory.
