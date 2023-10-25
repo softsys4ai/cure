@@ -101,10 +101,15 @@ The reported `energy=364.04 Wh`,  `Task_success_rate=0`, and `Positional_error=2
 
 To avoid constant human supervision and effort required to perform execution in physical robots, we collect observation data in simulation to learn the causal model using [Reval](https://github.com/softsys4ai/cure/blob/main/src/Reval/README.md). We already included the observational data in `cure/data` directory.
 
-#### Dubugging root causes
-Learning the causal model and determining root causes
+#### Training causal model
+The causal model was trained on 1000 observational data obtained using Reval. The following commands can be used for training and saving the causal model. The saved model can later be utilized for both inference purposes and transferring knowledge. We have already included the saved models both for Husky and Turtlebot 3 in the `cure/model` directory.
+```sh
+python run_cure_MOO.py --robot Husky_sim --train_data data/husky_1000.csv 
 ```
-python run_cure_MOO.py --robot Turtlebot3_sim --train_data data/obs_data/turtlebot3_1000.csv --outlier_data data/bug/turtlebot_outlier.csv -root_cause --f Task_success_rate --nf Energy Positional_error Obstacle_distance --top_k 5
 
+#### Identifying root causes
+Cure can perform debugging tasks such as identifying the root cause of a functional and non-functional fault. The following commands can be used to determine the root causes from the outlier data using the saved causal model. In this example, we have used `Task success rate` as a functional property, and `Energy`, `Positional_error` as non-functional properties. We display the root causes in the terminal.
+```sh
+python run_cure_MOO.py --robot Husky_sim -l --model model/care_Husky_sim.model --outlier_data data/husky_outlier.csv -root_cause  --f Task_success_rate --nf Energy Positional_error
 ```
 
