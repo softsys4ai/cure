@@ -8,7 +8,7 @@ Causal Understanding and Remediation for Enhancing Robot Performance
 ## Installation
 1. Install [Reval](https://github.com/softsys4ai/cure/tree/main/src/Reval) for performance measurement
 2. Install software dependencies for Cure
-```
+```sh
 git clone https://github.com/softsys4ai/cure.git
 cd ~/cure && pip install -r requirements.txt
 ```
@@ -72,7 +72,7 @@ optional arguments:
 ```
 ### Learning causal model
 The causal model was trained on $1000$ observational data obtained using [Reval](https://github.com/softsys4ai/cure/tree/main/src/Reval). The following commands can be used for training and saving the causal model. The saved model can later be utilized for both inference purposes and transferring knowledge. We have already included the saved models both for Husky and Turtlebot 3 in the `cure/model` directory.
-```
+```sh
 python run_cure_MOO.py --robot Turtlebot3_sim --train_data data/obs_data/turtlebot3_1000.csv 
 ```
 ### Multi-objective debugging
