@@ -104,12 +104,12 @@ To avoid constant human supervision and effort required to perform execution in 
 #### Training causal model
 The causal model was trained on 1000 observational data obtained using Reval. The following commands can be used for training and saving the causal model. The saved model can later be utilized for both inference purposes and transferring knowledge. We have already included the saved models both for Husky and Turtlebot 3 in the `cure/model` directory.
 ```sh
-python run_cure_MOO.py --robot Husky_sim --train_data data/husky_1000.csv 
+python run_cure_MOO.py --robot Husky_sim --train_data data/obs_data/husky_1000.csv 
 ```
 
 #### Identifying root causes
 Cure can perform debugging tasks such as identifying the root cause of a functional and non-functional fault. The following commands can be used to determine the root causes from the outlier data using the saved causal model. In this example, we have used `Task success rate` as a functional property, and `Energy`, `Positional_error` as non-functional properties. We display the root causes in the terminal.
 ```sh
-python run_cure_MOO.py --robot Husky_sim -l --model model/care_Husky_sim.model --outlier_data data/husky_outlier.csv -root_cause  --f Task_success_rate --nf Energy Positional_error
+python run_cure_MOO.py --robot Husky_sim -l --model model/care_Husky_sim.model --outlier_data data/bug/husky_outlier.csv -root_cause  --f Task_success_rate --nf Energy Positional_error
 ```
 
