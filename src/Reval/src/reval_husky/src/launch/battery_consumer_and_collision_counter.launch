@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <node pkg="reval_husky" name="battery_consumer" type="battery_consumer.py"/>
+    <node pkg="reval_husky" name="collision_counter" type="collision_counter.py"/> 
+</launch>

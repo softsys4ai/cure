@@ -1,0 +1,142 @@
+move_base:
+  controller_frequency:
+    method: constant
+    value:  10.0
+  planner_patience:
+    method: constant
+    value:  5.0
+  controller_patience:
+    method: constant
+    value:  15.0
+  conservative_reset_dist:
+    method: constant
+    value: 3.0
+  planner_frequency:
+    method: constant
+    value:  5.0
+  oscillation_timeout:
+    method: constant
+    value:  3.0
+  oscillation_distance: 
+    method: constant
+    value:  0.2
+
+DWAPlannerROS:
+  acc_lim_theta: 
+    method: constant
+    value: 3.2
+  acc_lim_trans: 
+    method: constant
+    value: 0.1
+  acc_lim_x: 
+    method: constant
+    value: 2.5
+  acc_lim_y: 
+    method: constant
+    value: 0.0
+  angular_sim_granularity:
+    method: constant
+    value: 0.1 
+  forward_point_distance:
+    method: constant
+    value: 0.325 
+  goal_distance_bias: 
+    method: constant
+    value: 20.0
+  max_scaling_factor: 
+    method: constant
+    value: 0.2
+  max_vel_theta:
+    method: constant
+    value: 2.75
+  max_vel_trans: 
+    method: constant
+    value: 0.22 
+  max_vel_x: 
+    method: constant
+    value: 0.22
+  max_vel_y: 
+    method: constant
+    value: 0.0 
+  min_vel_theta: 
+    method: constant
+    value: 1.37 
+  min_vel_trans: 
+    method: constant
+    value: 0.11
+  min_vel_x: 
+    method: constant
+    value: -0.22 
+  min_vel_y: 
+    method: constant
+    value: 0.0 
+  occdist_scale: 
+    method: constant
+    value: 0.02
+  oscillation_reset_angle: 
+    method: constant
+    value: 0.2
+  oscillation_reset_dist: 
+    method: constant
+    value: 0.25 
+  path_distance_bias: 
+    method: constant
+    value: 32.0
+  scaling_speed: 
+    method: constant
+    value: 0.25
+  sim_granularity: 
+    method: constant
+    value: 0.025 
+  sim_time:
+    method: constant
+    value: 1.5 
+  stop_time_buffer: 
+    method: constant
+    value: 0.2
+  theta_stopped_vel: 
+    method: constant
+    value: 0.1
+  trans_stopped_vel: 
+    method: constant
+    value: 0.1
+  twirling_scale: 
+    method: constant
+    value: 0.0 
+  vth_samples: 
+    method: constant
+    value: 40
+  vx_samples: 
+    method: constant
+    value: 20
+  vy_samples: 
+    method: constant
+    value: 0
+  xy_goal_tolerance: 
+    method: constant
+    value: 0.08
+  yaw_goal_tolerance:  
+    method: constant
+    value: 0.17
+
+costmap_common:
+  publish_frequency: 
+    method: constant
+    value: 10.0
+  resolution: 
+    method: constant
+    value: 0.05 
+  transform_tolerance: 
+    method: constant
+    value: 0.5
+  update_frequency:        
+    method: constant
+    value: 10.0
+    
+costmap_common_inflation:
+  cost_scaling_factor: 
+    method: constant
+    value: 3.0
+  inflation_radius:     
+    method: constant
+    value: 1.0

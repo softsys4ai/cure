@@ -1,0 +1,142 @@
+move_base:
+  controller_frequency:
+    method: random
+    value:  [5.0, 15.0]
+  planner_patience:
+    method: random
+    value:  [3.0, 7.0]
+  controller_patience:
+    method: random
+    value:  [10.0, 20.0]
+  conservative_reset_dist:
+    method: random
+    value: [1.0, 5.0]
+  planner_frequency:
+    method: constant
+    value:  5.0
+  oscillation_timeout:
+    method: constant
+    value:  3.0
+  oscillation_distance: 
+    method: constant
+    value:  0.2
+
+DWAPlannerROS:
+  acc_lim_theta: 
+    method: random
+    value: [2.0, 4.5]
+  acc_lim_trans: 
+    method: random
+    value: [0.05, 0.3]
+  acc_lim_x: 
+    method: random
+    value: [1.5, 4.0]
+  acc_lim_y: 
+    method: constant
+    value: 0.0
+  angular_sim_granularity:
+    method: constant
+    value: 0.1 
+  forward_point_distance:
+    method: random
+    value: [0.225, 0.525] 
+  goal_distance_bias: 
+    method: random
+    value: [10.0, 40.0]
+  max_scaling_factor: 
+    method: random
+    value: [0.1, 0.4]
+  max_vel_theta:
+    method: random
+    value: [1.5, 4.0]
+  max_vel_trans: 
+    method: random
+    value: [0.15, 0.4] 
+  max_vel_x: 
+    method: random
+    value: [0.15, 0.4] 
+  max_vel_y: 
+    method: constant
+    value: 0.0 
+  min_vel_theta: 
+    method: random
+    value: [0.5, 2.5] 
+  min_vel_trans: 
+    method: random
+    value: [0.08, 0.22] 
+  min_vel_x: 
+    method: random
+    value: [-0.3, 0.0] 
+  min_vel_y: 
+    method: constant
+    value: 0.0 
+  occdist_scale: 
+    method: random
+    value: [0.01, 0.15]
+  oscillation_reset_angle: 
+    method: random
+    value: [0.1, 0.5] 
+  oscillation_reset_dist: 
+    method: constant
+    value: 0.25 
+  path_distance_bias: 
+    method: random
+    value: [20.0, 45.0]
+  scaling_speed: 
+    method: random
+    value: [0.15, 0.35] 
+  sim_granularity: 
+    method: random
+    value: [0.015, 0.045] 
+  sim_time:
+    method: random
+    value: [0.5, 2.5] 
+  stop_time_buffer: 
+    method: random
+    value: [0.1, 1.5] 
+  theta_stopped_vel: 
+    method: random
+    value: [0.05, 0.15]
+  trans_stopped_vel: 
+    method: random
+    value: [0.05, 0.15]
+  twirling_scale: 
+    method: constant
+    value: 0.0 
+  vth_samples: 
+    method: random
+    value: [20, 50] 
+  vx_samples: 
+    method: random
+    value: [10, 30] 
+  vy_samples: 
+    method: random
+    value: [0, 5] 
+  xy_goal_tolerance: 
+    method: constant
+    value: 0.08
+  yaw_goal_tolerance:  
+    method: constant
+    value: 0.17
+
+costmap_common:
+  publish_frequency: 
+    method: random
+    value: [5.0, 20.0]
+  resolution: 
+    method: random
+    value: [0.02, 0.15] 
+  transform_tolerance: 
+    method: random
+    value: [0.2, 2.0]
+  update_frequency:        
+    method: random
+    value: [5.0, 20.0] 
+    
+costmap_common_inflation:
+  cost_scaling_factor: 
+    method: random
+    value: [3.0, 20.0]
+  inflation_radius:     
+    method: random
+    value: [0.3, 2.0]

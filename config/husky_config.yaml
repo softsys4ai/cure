@@ -1,0 +1,40 @@
+costmap_common_inflation:
+  Cost_scaling_factor: 
+    method: random
+    value: [1, 20]
+costmap_common:    
+  Update_frequency:
+    method: random
+    value: [4, 7]
+  Publish_frequency:
+    method: random
+    value: [1, 4]
+  Transform_tolerance:
+    method: random
+    value: [0.2, 2]
+
+TrajectoryPlannerROS:    
+  Path_distance_bias:
+    method: random
+    value: [0.1, 1]
+  Goal_distance_bias:
+    method: random
+    value: [0.5, 1.5]
+
+DWAPlannerROS:
+  Occdist_scale:
+    method: random
+    value: [0.01, 0.05]
+  Stop_time_buffer:
+    method: random
+    value: [0.1, 0.3]
+  yaw_goal_tolerance:
+    method: random
+    value: [0.1, 0.3]
+  xy_goal_tolerance:
+    method: random
+    value: [0.1, 0.4]
+  min_vel_x:
+    method: random
+    value: [-0.3, 0]
+
