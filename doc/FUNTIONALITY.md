@@ -101,8 +101,8 @@ The reported `energy=364.04 Wh`,  `Task_success_rate=0`, and `Positional_error=2
 
 To avoid constant human supervision and effort required to perform execution in physical robots, we collect observation data in simulation to learn the causal model using [Reval](https://github.com/softsys4ai/cure/blob/main/src/Reval/README.md). We already included the observational data in `cure/data` directory.
 
-#### Learn causal model
-Learning the causal model from observational collected in simulation
+#### Dubugging root causes
+Learning the causal model and determining root causes
 ```
 python run_cure_MOO.py --robot Turtlebot3_sim --train_data data/obs_data/turtlebot3_1000.csv --outlier_data data/bug/turtlebot_outlier.csv -root_cause --f Task_success_rate --nf Energy Positional_error Obstacle_distance --top_k 5
 
