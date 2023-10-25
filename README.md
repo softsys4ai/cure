@@ -109,6 +109,6 @@ python run_cure_MOO.py --robot Turtlebot3_phy --outlier_data data/bug/turtlebot3
 ```
 In this example, we used the causal model learned from `Turtlebot 3` in simulation and used it in `Turtlebot 3 physical` robot 
 
-# More details abour Cure
-For detailed instructions please use [functionality](https://github.com/softsys4ai/cure/blob/main/doc/FUNTIONALITY.md)
+## More details abour Cure
+For detailed instructions to reproduce our results, please use [functionality](https://github.com/softsys4ai/cure/blob/main/doc/FUNTIONALITY.md) and reproducibility
 
