@@ -31,12 +31,10 @@ optional arguments:
                         robotic platform
   --train_data          path of the training data (.csv)
   -root_cause           diagnose root-causes
-  --normal_data         path of the normal data (.csv)
   --outlier_data        path of the anomaly data (.csv)
   --f  [ ...]           functional properties (fixed: Task_success_rate)
   --nf  [ ...]          non-functional properties (default: [Energy,
                         Positional_error])
-  --repeat              number of bootstrap resamples (default: 1)
   --top_k               number of root-causes based on average causal effect
                         (default: 5)
   -l                    diagnose root-causes from the saved model [must be True
