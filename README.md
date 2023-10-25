@@ -5,21 +5,13 @@ Causal Understanding and Remediation for Enhancing Robot Performance
 * Ubuntu 20.04 LTS
 * [ROS Noetic](http://wiki.ros.org/noetic/Installation/Ubuntu)
 
-## Installation
+## Build Cure
 1. Install [Reval](https://github.com/softsys4ai/cure/tree/main/src/Reval) for performance measurement
-2. Install software dependencies for Cure
+2. Plase use the following commands to build cure from source
 ```sh
 git clone https://github.com/softsys4ai/cure.git
 cd ~/cure && pip install -r requirements.txt
-```
-## Build Cure
-Source your ROS setup.sh file
-```sh
 source /opt/ros/noetic/setup.bash
-```
-Run `catkin build` on the `root` directory
-```sh
-cd cure/
 catkin build
 source devel/setup.bash
 ```
