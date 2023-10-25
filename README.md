@@ -71,20 +71,45 @@ optional arguments:
                         and optimization
 ```
 ### Learning causal model
-The causal model was trained on $1000$ observational data obtained using [Reval](https://github.com/softsys4ai/cure/tree/main/src/Reval). The following commands can be used for training and saving the causal model. The saved model can later be utilized for both inference purposes and transferring knowledge. We have already included the saved models both for Husky and Turtlebot 3 in the `cure/model` directory.
+The causal model was trained on 1000 observational data obtained using [Reval](https://github.com/softsys4ai/cure/tree/main/src/Reval). The following commands can be used for training and saving the causal model. The saved model can later be utilized for both inference purposes and transferring knowledge. We have already included the saved models both for Husky and Turtlebot 3 in the `cure/model` directory.
 ```sh
 python run_cure_MOO.py --robot Turtlebot3_sim --train_data data/obs_data/turtlebot3_1000.csv 
 ```
 ### Multi-objective debugging
+To find the root causes functional and non-functional faults from the saved causal model, please use the following command:
+```sh
+python run_cure_MOO.py --robot Turtlebot3_sim -root_cause --outlier_data data/bug/turtlebot3_outlier.csv -l --model model/care_Turtlebot3_sim.model --f Task_success_rate --nf Energy Positional_error Obstacle_distance --top_k 5
+```
+### Multi-objective optimization
+To run multi-objective optimization using cure, please run the following command:
+```
+python run_cure_MOO.py --robot Turtlebot3_sim --outlier_data data/bug/turtlebot3_outlier.csv -l --model model/care_Turtlebot3_sim.model --f Task_success_rate --nf Energy Positional_error Obstacle_distance --top_k 5 -opt --f1 Energy --f2 Positional_error --f1_pref 2.0 --f2_pref 0.18 --sc 0.25 --tcr 0.8 --hv_ref_f1 19.98 --hv_ref_f2 15 --budget 200
+```
+In this example, we used `Energy` and `Positional_error` as our two objectives, and `Task_success_rate` and `Obstacle_distance` as constraints.
 
 ### Transferibility
+#### Setup
+1. Install the required dependencies for [Turtlebot 3](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)
+2. Run `roscore` on remote PC
+3. Run `Bringup` on Turtlebot 3 SBC
+```
+ssh ubuntu@{IP_ADDRESS_OF_RASPBERRY_PI}
+roslaunch turtlebot3_bringup turtlebot3_robot.launch
+```
+4. Launch the navigation on remote PC
+```
+$ export TURTLEBOT3_MODEL=burger
+$ roslaunch turtlebot3_navigation turtlebot3_navigation.launch
+```
+N.b. Place the `map` files in your `home` directory
 
+5. Run Cure
+To transfer the causal model learned from simulation to a physical robot, please use the following command.
+```
+python run_cure_MOO.py --robot Turtlebot3_phy --outlier_data data/bug/turtlebot3_outlier.csv -l --model model/care_Turtlebot3_sim.model --f Task_success_rate --nf Energy Positional_error Obstacle_distance --top_k 5 -opt --f1 Energy --f2 Positional_error --f1_pref 2.0 --f2_pref 0.18 --sc 0.25 --tcr 0.8 --hv_ref_f1 19.98 --hv_ref_f2 15 --budget 200
+```
+In this example, we used the causal model learned from `Turtlebot 3` in simulation and used it in `Turtlebot 3 physical` robot 
 
-
-
-
-
-
-# Artifact evaluation
-For detailed instructions to reproduce our results, please use [functionality](https://github.com/softsys4ai/cure/blob/main/doc/FUNTIONALITY.md)
+# More details abour Cure
+For detailed instructions please use [functionality](https://github.com/softsys4ai/cure/blob/main/doc/FUNTIONALITY.md)
 
