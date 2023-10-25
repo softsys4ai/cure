@@ -30,7 +30,7 @@ Reval supports both the [Husky simulator](https://www.clearpathrobotics.com/asse
     |     +--|------------|-+     |     |                             |
     |     |  v            v |     |     |          - TD      <--------------+ Probe
     |     |                 |     |     |          - DWA F   <--------------+ Probe
-    |     |     MS, BP      |     |     |          - MT      <--------------+ Probe
+    |     |        MS       |     |     |          - MT      <--------------+ Probe
     |     |                 |     |     |          - RNS     <--------------+ Probe
     |     +-----------------+     |     |                             |
     |      System under test      |     |       System under test     |
