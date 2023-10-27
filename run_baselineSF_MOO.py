@@ -8,10 +8,6 @@ import numpy as np
 from tabulate import tabulate
 from src.baseline_featureSelection import FeatureSelection
 from src.searchSpaceGen import SearchSpaceGen
-from ax.plot.pareto_utils import compute_posterior_pareto_frontier, get_observed_pareto_frontiers
-from ax.service.ax_client import AxClient
-from ax.plot.pareto_frontier import plot_pareto_frontier
-from ax.utils.notebook.plotting import render, init_notebook_plotting
 from src.utils import Argsparser_baselineSF, KeyboardInterrupt, Exception
 import warnings
 warnings.filterwarnings('ignore')

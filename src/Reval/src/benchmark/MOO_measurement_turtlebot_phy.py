@@ -116,7 +116,7 @@ else:
     Pentalty = 0
     log_p = p
 df_pen = pd.DataFrame({"Penalty":log_p})
-df_obs_dis = pd.DataFrame({"Penalty":obs_dis})
+df_obs_dis = pd.DataFrame({"Obstacle_distance":obs_dis})
 if not os.path.isfile('../../../../cure_log/penalty.csv'):
     df_pen.to_csv('../../../../cure_log/penalty.csv', index=False)
 else:

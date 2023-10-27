@@ -3,4 +3,4 @@
 cd ..
 cd ..
 cd turtlebot3/turtlebot3/turtlebot3_navigation/launch
-gnome-terminal -- roslaunch turtlebot3_navigation_nogui_phy.launch
+gnome-terminal -- roslaunch turtlebot3_navigation_nogui_phy.launch map_file:=$HOME/cure/src/Reval/src/turtlebot3/turtlebot3/turtlebot3_navigation/maps/map_phy.yaml

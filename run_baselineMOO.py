@@ -4,10 +4,6 @@ import pickle
 import os
 import subprocess
 from src.baseline_MOO import AXMO
-from ax.plot.pareto_utils import compute_posterior_pareto_frontier, get_observed_pareto_frontiers
-from ax.service.ax_client import AxClient
-from ax.plot.pareto_frontier import plot_pareto_frontier
-from ax.utils.notebook.plotting import render, init_notebook_plotting
 from src.utils import Argsparser_baselineMOO, KeyboardInterrupt, Exception
 import warnings
 warnings.filterwarnings('ignore')

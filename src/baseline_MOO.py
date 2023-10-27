@@ -293,13 +293,13 @@ class AXMO():
                                     ],
                 tracking_metric_names=["Task_completion", "Energy_track", "Mission_time_track",
                                        "Traveled_distance_track", "Planner_failed_track",
-                                       "Positional_error_track", "Recovery_executed_track"],                       
+                                       "Positional_error_track", "Recovery_executed_track", "Penalty_track"],                       
                 choose_generation_strategy_kwargs = {"num_initialization_trials": init_trails},
     )
         for i in range(n_iter):
             parameters, trial_index = ax_client.get_next_trial()
             # Local evaluation here can be replaced with deployment to external system.
-            ax_client.complete_trial(trial_index=trial_index, raw_data=self.evaluate(parameters, f1, f2, hv_ref_f1, hv_ref_f2))           
+            ax_client.complete_trial(trial_index=trial_index, raw_data=self.evaluate(parameters, f1, f2, hv_ref_f1, hv_ref_f2))          
             result = {"Iteration": (i+1),
                       f"{self.f1}": (self.obj_f1),
                       f"{self.f2}": (self.obj_f2),

@@ -212,7 +212,7 @@ class SFAXMO():
                                     ],
                 tracking_metric_names=["Task_completion", "Energy_track", "Mission_time_track",
                                        "Traveled_distance_track", "Planner_failed_track",
-                                       "Positional_error_track", "Recovery_executed_track"],
+                                       "Positional_error_track", "Recovery_executed_track", "Penalty_track"],
                 choose_generation_strategy_kwargs = {"num_initialization_trials": init_trails},     
     )
 

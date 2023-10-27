@@ -1,0 +1,9 @@
+**/__pycache__
+.catkin_tools/
+build/
+cure_log/
+devel/
+logs/
+model/optimization_snapshot/
+src/Reval/src/benchmark/log/
+src/Reval/Results

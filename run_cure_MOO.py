@@ -8,7 +8,6 @@ import networkx as nx
 from tabulate import tabulate
 from src.causal_model import CausalModel
 from ananke.graphs import ADMG
-from ananke.estimation import CausalEffect
 from src.searchSpaceGen import SearchSpaceGen
 from src.utils import Argsparser_care, Loader, KeyboardInterrupt, Exception
 
