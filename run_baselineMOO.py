@@ -28,13 +28,14 @@ if __name__ == "__main__":
     with open('src/Reval/src/benchmark/log/sc.ob', 'wb') as fp:
         pickle.dump(args.sc, fp)    
     viz = args.viz
-    if args.l_opt:
-        if not os.path.isfile(f'model/optimization_snapshot/{args.robot}_ax_client_snapshot_{args.snap}.json'):
-            parser.print_help()
-            print("")
-            sys.exit(f"[ERROR]: Saved optimization JSON (snapshot {args.snap}) not found!")   
-        else:
-            print("[STATUS]: Optimization snapshot restored!")                     
+    # if args.l_opt:
+    #     if not os.path.isfile(f'model/optimization_snapshot/{args.robot}_ax_client_snapshot_{args.snap}.json'):
+    #         parser.print_help()
+    #         print("")
+    #         sys.exit(f"[ERROR]: Saved optimization JSON (snapshot {args.snap}) not found!")   
+    #     else:
+    #         print("[STATUS]: Optimization snapshot restored!") 
+                      
     MO = AXMO(robot, viz)
     if args.robot == "Turtlebot3_phy":
         print("[STATUS]: Launching navigation node")
@@ -53,5 +54,5 @@ if __name__ == "__main__":
                 hv_ref_f2=args.hv_ref_f2,
                 init_trails=args.init_trails,
                 l_opt=args.l_opt,
-                snap=args.snap,
+                json=args.json,
                 verbose_logging=args.verbose)

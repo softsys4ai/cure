@@ -7,3 +7,12 @@ logs/
 model/optimization_snapshot/
 src/Reval/src/benchmark/log/
 src/Reval/Results
+src/SFAXMO.py
+config/AXMO_config_dynamic.py
+data/results
+tests/rq1_exp_mobo.sh
+tests/rq1_exp_ridgecv-mobo.sh
+tests/rq2_exp_mobo_HuskySim-to-Turtlebot3Phy.sh
+tests/rq2_exp_ridgecv-mobo_HuskySim-to-Turtlebot3Phy.sh
+tests/rq2.1_exp_mobo_Turtlebot3Sim-to-Turtlebot3Phy.sh
+tests/rq2.1_exp_ridgecv-mobo_Turtlebot3Sim-to-Turtlebot3Phy.sh

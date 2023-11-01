@@ -153,13 +153,13 @@ if __name__ == '__main__':
         # Generate search space
         SG = SearchSpaceGen(robot)
         arameters, nodes, search_space = SG.get_configSpcae(obj_union_met)        
-        if args.l_opt:
-            if not os.path.isfile(f'model/{args.robot}_ax_client_snapshot_{args.snap}.json'):
-                parser.print_help()
-                print("")
-                sys.exit(f"[ERROR]: Saved optimization JSON (snapshot {args.snap}) not found!")
-            else:
-                print("[STATUS]: Optimization snapshot restored!")             
+        # if args.l_opt:
+        #     if not os.path.isfile(f'model/{args.robot}_ax_client_snapshot_{args.snap}.json'):
+        #         parser.print_help()
+        #         print("")
+        #         sys.exit(f"[ERROR]: Saved optimization JSON (snapshot {args.snap}) not found!")
+        #     else:
+        #         print("[STATUS]: Optimization snapshot restored!")             
         if args.robot == "Turtlebot3_phy":
             print("[STATUS]: Launching navigation node")
             turtlebot_nav = subprocess.check_call("./turtlebot3_move_base_phy.sh '%s'", cwd="src/Reval/src/benchmark/service", shell=True)  
@@ -183,5 +183,5 @@ if __name__ == '__main__':
                     hv_ref_f2=args.hv_ref_f2,
                     init_trails=args.init_trails,
                     l_opt=args.l_opt,
-                    snap=args.snap,
+                    json=args.json,
                     verbose_logging=args.verbose)  

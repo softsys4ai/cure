@@ -241,11 +241,11 @@ class AXMO():
             f1_eval_index = 5                    
         hyp = pg.hypervolume([[evaluation[f1_eval_index], evaluation[f2_eval_index]]])
         try:
-            print("[WARN]: HV computation may be inaccurate. Compute HV separately!")
+            # print("[WARN]: HV computation may be inaccurate. Compute HV separately!")
             self.hv = (hyp.compute([hv_ref_f1, hv_ref_f2]) / np.prod([hv_ref_f1, hv_ref_f2]))
         except:
             self.hv = 0
-            print(f"[STATUS]: Hypervolume reference violated! (logged HV {self.hv})")
+            print(f"[WARN]: Hypervolume reference violated! (logged HV {self.hv})")
         self.obj_f1 = evaluation[f1_eval_index]
         self.obj_f2 = evaluation[f2_eval_index]
         self.task_success = evaluation[6]
@@ -270,14 +270,27 @@ class AXMO():
                 }                                                                          
     
     def ax(self, robot:str, n_iter:int, f1:str, f2:str, f1_pref:float, 
-           f2_pref:float, safety_constarint:str, task_completion_constraint:str, l_opt:bool, snap:int, 
+           f2_pref:float, safety_constarint:str, task_completion_constraint:str, l_opt:bool, json:str, 
            hv_ref_f1:float, hv_ref_f2:float, init_trails:int, verbose_logging:bool):           
         self.f1 = f1
         self.f2 = f2
         self.safety_constarint = safety_constarint
         if l_opt:
             ax_client = AxClient(verbose_logging=verbose_logging)
-            ax_client = AxClient.load_from_json_file(filepath=f'model/optimization_snapshot/{robot}_ax_client_snapshot_{snap}.json')
+            ax_client = AxClient.load_from_json_file(filepath=f'{json}.json')
+            print("[STATUS]: Optimization snapshot loaded!")
+            ax_client.make_experiment(
+                parameters=params,
+                objectives={f"{self.f1}": "minimize", f"{self.f2}": "minimize"},
+                objective_thresholds = [f"{self.f1} <= {f1_pref}", f"{self.f2} <= {f2_pref}"],
+                outcome_constraints=[f"{self.safety_constarint}", 
+                                    f"{task_completion_constraint}",
+                                    ],
+                tracking_metric_names=["Task_completion", "Energy_track", "Mission_time_track",
+                                       "Traveled_distance_track", "Planner_failed_track",
+                                       "Positional_error_track", "Recovery_executed_track", 
+                                       "Penalty_track"],                       
+            )
         else:    
             ax_client = AxClient(verbose_logging=verbose_logging)
             ax_client.create_experiment(
@@ -293,7 +306,8 @@ class AXMO():
                                     ],
                 tracking_metric_names=["Task_completion", "Energy_track", "Mission_time_track",
                                        "Traveled_distance_track", "Planner_failed_track",
-                                       "Positional_error_track", "Recovery_executed_track", "Penalty_track"],                       
+                                       "Positional_error_track", "Recovery_executed_track", 
+                                       "Penalty_track"],                       
                 choose_generation_strategy_kwargs = {"num_initialization_trials": init_trails},
     )
         for i in range(n_iter):
@@ -330,6 +344,7 @@ class AXMO():
                               'cure_log/AXMO_results.csv')
             print(tabulate(df, tablefmt='github', showindex=False))
             ax_client.save_to_json_file(filepath=f'model/optimization_snapshot/{robot}_ax_client_snapshot_{trial_index+1}.json')
+        print("[STATUS]: Optimization done!")
         return ax_client.experiment    
 
 

@@ -125,10 +125,9 @@ class Argsparser_care():
         parser.add_argument('-l_opt',
                             action="store_true",                                      
                             help='reload optimization from JSON')   
-        parser.add_argument('--snap', 
-                            metavar='', 
-                            type=int,                                      
-                            help='optmization iteration to load from')                    
+        parser.add_argument('--json', 
+                            metavar='',                                    
+                            help='optmization model to load from')                    
         parser.add_argument('-v', '--verbose',
                             action="store_true",                                      
                             help='show statements during learning, effect estimation, and optimization')
@@ -144,10 +143,14 @@ class Argsparser_baselineSF():
                             choices=["Husky_sim", "Turtlebot3_sim", "Turtlebot3_phy"],                    
                             type=str,                                      
                             help='robotic platform')         
-        parser.add_argument('--data', 
+        parser.add_argument('--train_data', 
+                            metavar='',                  
+                            type=str,                                      
+                            help='path of the training data (.csv)')  
+        parser.add_argument('--outlier_data', 
                             required=True,                 
                             type=str,                                      
-                            help='path of the data (.csv)')         
+                            help='path of the data (.csv)')               
         parser.add_argument('--f', 
                             metavar='', 
                             choices=['Task_success_rate'],
@@ -171,6 +174,12 @@ class Argsparser_baselineSF():
                             default=5, 
                             type=int,                                       
                             help='number of root-causes based on Ridge coeffecients (default:  5)')
+        parser.add_argument('-l', 
+                            action="store_true",                                     
+                            help='diagnose root-causes from the saved model [must be True to use --model]') 
+        parser.add_argument('--model', 
+                            metavar='',                              
+                            help='saved model path (.joblib)')        
         parser.add_argument('-opt', 
                             action="store_true",                                     
                             help='perform optimization [must be True to use --budget, --f1, --f2, --f1_pref, --f2_pref, --sc]')     
@@ -232,10 +241,9 @@ class Argsparser_baselineSF():
         parser.add_argument('-l_opt',
                             action="store_true",                                      
                             help='reload optimization from JSON') 
-        parser.add_argument('--snap', 
-                            metavar='', 
-                            type=int,                                      
-                            help='optmization iteration to load from')                        
+        parser.add_argument('--json', 
+                            metavar='',                                      
+                            help='optmization model to load from')                        
         parser.add_argument('-v', '--verbose',
                             action="store_true",                                      
                             help='show statements during optimization')
@@ -308,10 +316,9 @@ class Argsparser_baselineMOO():
         parser.add_argument('-l_opt',
                             action="store_true",                                      
                             help='reload optimization from JSON') 
-        parser.add_argument('--snap', 
-                            metavar='', 
-                            type=int,                                      
-                            help='optmization iteration to load from')               
+        parser.add_argument('--json', 
+                            metavar='',                                    
+                            help='optmization model to load from')               
         parser.add_argument('-v', '--verbose',
                             action="store_true",                                      
                             help='show statements during optimization')

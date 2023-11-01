@@ -18,6 +18,7 @@ fig.canvas.set_window_title('CURE Live Resuls')
 ax1 = fig.add_subplot(2,2,1)
 ax2 = fig.add_subplot(2,2,2)
 ax3 = fig.add_subplot(2,2,3)
+# ax4 = fig.add_subplot(2,2,4)
 ax4 = fig.add_subplot(224, projection='3d')
 ax4.view_init(elev=26, azim=-33)
 cbar = None
@@ -71,7 +72,7 @@ def live_result(i):
         ax1.xaxis.set_major_locator(MaxNLocator(integer=True))
 
 
-        ax2.step(pareto[0][0], pareto[1][0], color="tab:orange", marker="*", markerfacecolor='r', markersize=10)
+        ax2.step(pareto[0][0], pareto[1][0], color="tab:orange")
         # ax2.fill_between(range(15,41), 0.12, 0.18, color='grey', alpha=0.5, label="Threshold")
         ax2.set_title("Pareto front")
         ax2.set_xlabel("Energy (Wh)")
@@ -90,7 +91,8 @@ def live_result(i):
         #     # Triangulate the data
         #     triang = mtri.Triangulation(pose_error, energy)
         #     # Create a 3D surface plot
-        #     surf = ax4.plot_trisurf(triang, rns, cmap='plasma', edgecolor='k', linewidth=0, alpha=1, antialiased=True)
+        #     # surf = ax4.plot_trisurf(triang, rns, cmap='plasma', edgecolor='k', linewidth=0, alpha=1, antialiased=True)
+        #     contour = ax4.tricontourf(triang, rns, cmap='plasma', levels=500, alpha=0.5)
         #     # Overlay scatter plot for individual points with colors based on iteration
         #     sc = ax4.scatter(pose_error, energy, rns, c=n_iter, cmap='plasma',marker='')   
         #     ax4.set_title("Budget utilization")
@@ -110,7 +112,6 @@ def live_result(i):
         #     ax4.set_zlabel(r"$\mathcal{T}_{cr}$")
         #     plt.tick_params(labelsize=8, direction="in")
         #     ax4.xaxis.set_major_locator(MaxNLocator(integer=True)) 
-            
         #     if cbar:
         #         cbar.remove()     
         #     cbar = plt.colorbar(sc, shrink=0.8, ax=ax4, pad=0.13)  
@@ -124,11 +125,16 @@ def live_result(i):
         ax4.set_zlabel(r"$\mathcal{T}_{cr}$")
         plt.tick_params(labelsize=8, direction="in")
         ax4.xaxis.set_major_locator(MaxNLocator(integer=True)) 
-        
         if cbar:
             cbar.remove()     
         cbar = plt.colorbar(sc, shrink=0.8, ax=ax4, pad=0.13)  
-        cbar.set_label('Iteration')                
+        cbar.set_label('Iteration')       
+        # 
+
+        # ax4.scatter(energy, pose_error, s=50, c=n_iter,  alpha=0.3, cmap=cm.plasma)  
+        # ax4.set_title("Budget utilization")
+        # ax4.set_xlabel("Energy (Wh)")
+        # ax4.set_ylabel(r"Pose error ($E_{dist}$)")               
         
         plt.subplots_adjust(hspace=0.25, wspace=0.185, top=0.955, bottom=0.065, left=0.075, right=0.98)
 

@@ -7,7 +7,7 @@ Causal Understanding and Remediation for Enhancing Robot Performance
 
 ## Build Cure
 1. Install [Reval](https://github.com/softsys4ai/cure/tree/main/src/Reval) for performance measurement
-2. Plase use the following commands to build cure from source
+2. Please use the following commands to build cure from source
 ```sh
 git clone https://github.com/softsys4ai/cure.git
 cd ~/cure && pip install -r requirements.txt
@@ -92,7 +92,6 @@ roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
 $ export TURTLEBOT3_MODEL=burger
 ```
-N.b. Place the `map` files in your `home` directory
 
 5. Run Cure
 To transfer the causal model learned from simulation to a physical robot `(Turtlebot 3 sim -> Turtlebot 3 real)`, please use the following command.

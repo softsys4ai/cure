@@ -43,25 +43,58 @@ if __name__ == "__main__":
         parser.print_help()
         print("")
         sys.exit("[ERROR]: f1 and f2 can not be same!")  
+    # Loading outlier data
     try:
-        data = pd.read_csv(args.data)
+        outlier_data = pd.read_csv(args.outlier_data)
     except:
         parser.print_help()
         print("")
-        sys.exit("[ERROR]: provide the path of the data!")             
-    columns = data.columns
-    config = np.array(data.iloc[:, :34]) # only the configs
-    config_columns = columns[0:34].to_list()    
+        sys.exit("[ERROR]: Provide the path of the outlier data!")      
+    outlier_columns = outlier_data.columns
+    outlier_config = outlier_data.iloc[:, :34].values # only the configs
+    outlier_config_columns = outlier_columns[0:34] 
+    outlier_obj_columns = outlier_columns[34:42]
 
     FS = FeatureSelection()
-    root_causes = []
-    for name in range(len(user_interest)):
-        print(f"[STATUS]: Diagnosing root-cause for {user_interest[name]}")
-        root_causes.append(FS.get_rootCause(config_columns=config_columns,
-                            config=config,
-                            objective_name=user_interest[name],
-                            objective=np.array(data[user_interest[name]]),
-                            top_k=args.top_k))
+
+    if args.l:
+        # Diagonose root causes
+        root_causes = []
+        for name in range(len(user_interest)):
+            print(f"[STATUS]: Diagnosing root-cause for {user_interest[name]}")
+            root_causes.append(FS.get_rootCause(outlier_data=outlier_data,
+                                            model_name=args.model,
+                                            config_columns=outlier_config_columns,
+                                            obj_columns=outlier_obj_columns,
+                                            config=outlier_config,
+                                            objective_name=user_interest[name],
+                                            top_k=args.top_k))        
+    else:    
+        # Loading the train data
+        try:
+            train_data = pd.read_csv(args.train_data)
+        except:
+            parser.print_help()
+            print("")
+            sys.exit("[ERROR]: Provide the path of the train data!")           
+        train_columns = train_data.columns
+        train_config = train_data.iloc[:, :34].values # only the configs
+        train_obj = train_data.iloc[:, 34:42].values
+        train_config_columns = train_columns[0:34] 
+        train_obj_columns = train_columns[34:42]        
+        # Train the model
+        FS.train(config=train_config, objectives=train_obj, model_name=f"model/RidgeCV_{args.robot}_model")
+        # Diagonose root causes
+        root_causes = []
+        for name in range(len(user_interest)):
+            print(f"[STATUS]: Diagnosing root-cause for {user_interest[name]}")
+            root_causes.append(FS.get_rootCause(outlier_data=outlier_data,
+                                            model_name=f"model/RidgeCV_{args.robot}_model",
+                                            config_columns=outlier_config_columns,
+                                            obj_columns=outlier_obj_columns,
+                                            config=outlier_config,
+                                            objective_name=user_interest[name],
+                                            top_k=args.top_k))
 
     # Display root-causes
     table = []
@@ -74,14 +107,7 @@ if __name__ == "__main__":
     print(tabulate((pd.DataFrame(table).T), tablefmt="simple", showindex=False)) 
     (pd.DataFrame(table).T).to_csv("cure_log/baseline_root_causes.csv", index=False, header=False)
 
-    if args.opt:
-        if args.l_opt:
-            if not os.path.isfile(f'model/{args.robot}_ax_client_snapshot_{args.snap}.json'):
-                parser.print_help()
-                print("")
-                sys.exit(f"[ERROR]: Saved optimization JSON (snapshot {args.snap}) not found!")  
-            else:
-                print("[STATUS]: Optimization snapshot restored!")                       
+    if args.opt:                       
     # select config based on importance
         name = []
         for item in range(len(root_causes)):
@@ -118,5 +144,5 @@ if __name__ == "__main__":
                     hv_ref_f2=args.hv_ref_f2,
                     init_trails=args.init_trails,
                     l_opt=args.l_opt,
-                    snap=args.snap,
+                    json=args.json,
                     verbose_logging=args.verbose)   
