@@ -73,7 +73,7 @@ python run_cure_MOO.py --robot Turtlebot3_sim -root_cause --outlier_data data/bu
 ### Multi-objective optimization
 To run multi-objective optimization using cure, please run the following command:
 ```
-python run_cure_MOO.py --robot Turtlebot3_sim --outlier_data data/bug/turtlebot3_outlier.csv -l --model model/care_Turtlebot3_sim.model --f Task_success_rate --nf Energy Positional_error Obstacle_distance --top_k 5 -opt --f1 Energy --f2 Positional_error --f1_pref 2.0 --f2_pref 0.18 --sc 0.25 --tcr 0.8 --hv_ref_f1 19.98 --hv_ref_f2 15 --budget 200
+python run_cure_MOO.py --robot Turtlebot3_sim --outlier_data data/bug/turtlebot3_outlier.csv -l --model model/care_Turtlebot3_sim.model --f Task_success_rate --nf Energy Positional_error Obstacle_distance --top_k 5 -opt --f1 Energy --f2 Positional_error --f1_pref 1.2 --f2_pref 0.15 --sc 0.25 --tcr 0.8 --hv_ref_f1 19.98 --hv_ref_f2 3.0 --budget 200
 ```
 In this example, we used `Energy` and `Positional_error` as our two objectives, and `Task_success_rate` and `Obstacle_distance` as constraints.
 
@@ -96,7 +96,13 @@ $ export TURTLEBOT3_MODEL=burger
 5. Run Cure
 To transfer the causal model learned from simulation to a physical robot `(Turtlebot 3 sim -> Turtlebot 3 real)`, please use the following command.
 ```
-python run_cure_MOO.py --robot Turtlebot3_phy --outlier_data data/bug/turtlebot3_outlier.csv -l --model model/care_Turtlebot3_sim.model --f Task_success_rate --nf Energy Positional_error Obstacle_distance --top_k 5 -opt --f1 Energy --f2 Positional_error --f1_pref 2.0 --f2_pref 0.18 --sc 0.25 --tcr 0.8 --hv_ref_f1 19.98 --hv_ref_f2 15 --budget 200
+python run_cure_MOO.py --robot Turtlebot3_phy --outlier_data data/bug/turtlebot3_outlier.csv -l --model model/care_Turtlebot3_sim.model --f Task_success_rate --nf Energy Positional_error Obstacle_distance --top_k 5 -opt --f1 Energy --f2 Positional_error --f1_pref 1.2 --f2_pref 0.18 --sc 0.25 --tcr 0.8 --hv_ref_f1 19.98 --hv_ref_f2 3 --budget 50
+```
+
+### Real time results
+To visualize the results in real time, please run the following commands in a seperate terminal:
+```sh
+python live_plot.py --hv_ref_f1 19.98 --hv_ref_f2 3.2
 ```
 
 ## More details abour Cure
