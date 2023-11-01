@@ -4,12 +4,14 @@ build/
 cure_log/
 devel/
 logs/
+fig/
 model/optimization_snapshot/
 src/Reval/src/benchmark/log/
 src/Reval/Results
 src/SFAXMO.py
 config/AXMO_config_dynamic.py
 data/results
+data/optimodels
 tests/rq1_exp_mobo.sh
 tests/rq1_exp_ridgecv-mobo.sh
 tests/rq2_exp_mobo_HuskySim-to-Turtlebot3Phy.sh
