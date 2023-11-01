@@ -34,11 +34,6 @@ parser.add_argument('--hv_ref_f2',
                     required=True,
                     type=float,                                      
                     help='hypervolum reference for f2') 
-# parser.add_argument('--n_iter', 
-#                     metavar='', 
-#                     required=True,
-#                     type=int,                                      
-#                     help='number of interations') 
 args = parser.parse_args() 
 
 def live_result(i):
@@ -86,6 +81,7 @@ def live_result(i):
         # ax3.set_ylim(0,1.2)
         ax3.xaxis.set_major_locator(MaxNLocator(integer=True))
         
+        ## For surface plot
         # try:
         #     ## For Triangulate
         #     # Triangulate the data
@@ -128,13 +124,7 @@ def live_result(i):
         if cbar:
             cbar.remove()     
         cbar = plt.colorbar(sc, shrink=0.8, ax=ax4, pad=0.13)  
-        cbar.set_label('Iteration')       
-        # 
-
-        # ax4.scatter(energy, pose_error, s=50, c=n_iter,  alpha=0.3, cmap=cm.plasma)  
-        # ax4.set_title("Budget utilization")
-        # ax4.set_xlabel("Energy (Wh)")
-        # ax4.set_ylabel(r"Pose error ($E_{dist}$)")               
+        cbar.set_label('Iteration')                     
         
         plt.subplots_adjust(hspace=0.25, wspace=0.185, top=0.955, bottom=0.065, left=0.075, right=0.98)
 

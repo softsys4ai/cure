@@ -27,15 +27,7 @@ if __name__ == "__main__":
     robot = args.robot
     with open('src/Reval/src/benchmark/log/sc.ob', 'wb') as fp:
         pickle.dump(args.sc, fp)    
-    viz = args.viz
-    # if args.l_opt:
-    #     if not os.path.isfile(f'model/optimization_snapshot/{args.robot}_ax_client_snapshot_{args.snap}.json'):
-    #         parser.print_help()
-    #         print("")
-    #         sys.exit(f"[ERROR]: Saved optimization JSON (snapshot {args.snap}) not found!")   
-    #     else:
-    #         print("[STATUS]: Optimization snapshot restored!") 
-                      
+    viz = args.viz             
     MO = AXMO(robot, viz)
     if args.robot == "Turtlebot3_phy":
         print("[STATUS]: Launching navigation node")
