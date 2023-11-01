@@ -45,8 +45,6 @@ import pandas as pd
 from src.measurement import TurtlebotSimMeasurement, HuskySimMeasurement, TurtlebotPhyMeasurement
 from ax.service.ax_client import AxClient
 from ax.service.utils.instantiation import ObjectiveProperties
-from ax.runners.synthetic import SyntheticRunner
-from ax.plot.pareto_utils import compute_posterior_pareto_frontier, get_observed_pareto_frontiers
 from tabulate import tabulate
 import pygmo as pg
 
