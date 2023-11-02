@@ -100,7 +100,7 @@ python run_cure_MOO.py --robot Turtlebot3_phy --outlier_data data/bug/turtlebot3
 ```
 
 ### Real time results
-To visualize the results in real time, please run the following commands in a seperate terminal:
+To visualize the results in real time, please run the following commands in a separate terminal:
 ```sh
 python live_plot.py --hv_ref_f1 19.98 --hv_ref_f2 3.2
 ```
