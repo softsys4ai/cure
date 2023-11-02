@@ -22,7 +22,7 @@ python run_baselineMOO.py --robot Husky_sim --f1 Energy --f2 Positional_error --
 ```
 For RidgeCV-MOBO
 ```sh
-python run_baselineSF_MOO.py --robot Husky_sim --outlier_data data/bug/husky_outlier.csv -l --model model/RidgeCV_Husky_sim_model --f Task_success_rate --nf Energy Positional_error Obstacle_distance --top_k 5 -opt --f1 Energy --f2 Positional_error --f1_pref 40.0 --f2_pref 0.18 --sc 0.25 --tcr 0.8 --hv_ref_f1 400.0 --hv_ref_f2 15 --budget 201 & gnome-terminal -- python live_plot.py --hv_ref_f1 400 --hv_ref_f2 35
+python run_baselineSF_MOO.py --robot Husky_sim --outlier_data data/bug/husky_outlier.csv -l --model model/RidgeCV_Husky_sim_model --f Task_success_rate --nf Energy Positional_error Obstacle_distance --top_k 5 -opt --f1 Energy --f2 Positional_error --f1_pref 40.0 --f2_pref 0.18 --sc 0.25 --tcr 0.8 --hv_ref_f1 400.0 --hv_ref_f2 15 --budget 200
 ```
 ##### Results
 The results reported in this paper are stored in a `CSV` file located in the `cure/cure_log` directory. Note that, during hypervolume computation, the execution might show warnings if the ovserved `f^{ref}` points are higher than the defined points. Therefore, we have computed the hypervoulme after the experiments are over from using `CSV` file. Note that this experiment is conducted once without repetition; thus, there are no error bars.
