@@ -19,8 +19,8 @@ N.b. If you face `Catkin command not found`, install `sudo apt-get install pytho
 
 ## How to use Cure
 CURE is used for tasks such as performance optimization and performance debugging in robotic systems. Given the cost and human involvement associated with collecting training data from physical robots for these tasks, CURE addresses these challenges by learning the performance behavior of the robot in simulations and transferring the acquired knowledge to physical robots. CURE also works with data from physical robots, we use simulator data to evaluate the transferability of the causal model.
-- In simulation mode, CURE is compatible with any device utilizing Husky and Turtlebot in Gazebo environment.
-- In reality mode, the performance measurements are directly taken from the physical robot. In the experiments, we have used Turtlebot 3 platform. 
+- In offline mode, CURE is compatible with any device utilizing Husky and Turtlebot in Gazebo environment.
+- In online mode, the performance measurements are directly taken from the physical robot. In the experiments, we have used Turtlebot 3 platform. 
 - Debugging mode, users can query the root cause of a certain functional and non-functional faults. For example, what is the root cause of the task failure and higher energy consumption
 
 ### Arguments
