@@ -108,3 +108,18 @@ python live_plot.py --hv_ref_f1 19.98 --hv_ref_f2 3.2
 ## More details abour Cure
 For detailed instructions to reproduce our results, please use [functionality](https://github.com/softsys4ai/cure/blob/main/doc/FUNTIONALITY.md) and [reproducibility](https://github.com/softsys4ai/cure/blob/main/doc/REPRODUCE.md)
 
+## Cite CURE
+If you use CURE in your research or the dataset in this repository please cite the following:
+```
+@ARTICLE{10916515,
+  author={Hossen, Md Abir and Kharade, Sonam and O'Kane, Jason M. and Schmerl, Bradley and Garlan, David and Jamshidi, Pooyan},
+  journal={IEEE Transactions on Robotics}, 
+  title={CURE: Simulation-Augmented Autotuning in Robotics}, 
+  year={2025},
+  volume={41},
+  pages={2825-2842},
+  keywords={Robots;Optimization;Transfer learning;Robot sensing systems;Navigation;Safety;Computer bugs;Bayes methods;Tuning;Software algorithms;Causal inference;optimization;robot testing;robotics and cyber-physical systems},
+  doi={10.1109/TRO.2025.3548546}
+}
+
+```
